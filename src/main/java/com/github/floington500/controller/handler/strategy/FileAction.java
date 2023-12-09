@@ -16,7 +16,7 @@ public abstract class FileAction implements Handler {
     @Override
     public ResponseEntity<Object> handle(FileContext ctx) {
         filename = toLocalPath("/upload") + pathToFilename(ctx.URI());
-        String directoryPath = toLocalPath(ctx.URI());
+        directoryPath = toLocalPath(ctx.URI());
 
         return handleFile(ctx.payload());
     }
