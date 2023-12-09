@@ -1,9 +1,6 @@
 package com.github.floington500.controller.service;
 
-import com.github.floington500.controller.service.strategy.DeleteFile;
-import com.github.floington500.controller.service.strategy.DownloadFile;
-import com.github.floington500.controller.service.strategy.IOperation;
-import com.github.floington500.controller.service.strategy.UpdateFile;
+import com.github.floington500.controller.service.strategy.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,7 +20,7 @@ public class FileService {
         fileOperations.put("download", new DownloadFile());
         fileOperations.put("delete", new DeleteFile());
         fileOperations.put("update", new UpdateFile());
-        fileOperations.put("upload", new UpdateFile());
+        fileOperations.put("upload", new UploadFile());
     }
 
     public ResponseEntity<Object> performFileOperation(String operation, MultipartFile payload, String URI) {
