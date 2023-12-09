@@ -1,0 +1,18 @@
+server:
+  error:
+    include-message: on_param
+  servlet:
+    jsp:
+      init-parameters:
+        listings=false:
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 1GB
+      max-request-size: 1GB
+  api:
+    key: ${API_KEY}
+  security:
+    user:
+      password: ${SECURITY_PASSWORD}
