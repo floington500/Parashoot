@@ -40,6 +40,8 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers(HttpMethod.GET, "/files/**", "/upload/status")
                         .permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/files/**")
+                        .authenticated()
                         .requestMatchers(HttpMethod.POST, "/upload/**")
                         .authenticated()
                 )
