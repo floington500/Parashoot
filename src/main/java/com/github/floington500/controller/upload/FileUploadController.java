@@ -23,7 +23,7 @@ public class FileUploadController {
     /**
      * Endpoint for handling requests from the client to upload files.
      *
-     * @param file the file uploaded by the client
+     * @param payload the file uploaded by the client
      * @param request used to map the file the client wants to the local filesystem.
      * @return if the upload was successful
      */
