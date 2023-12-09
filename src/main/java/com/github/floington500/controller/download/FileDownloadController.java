@@ -4,9 +4,8 @@ import com.github.floington500.controller.service.FileService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/files")
@@ -31,5 +30,20 @@ public class FileDownloadController {
             HttpServletRequest request
     ) {
         return fileService.createBody(request.getRequestURI());
+    }
+
+    @DeleteMapping("/**")
+    public ResponseEntity<String> deleteFile(
+            HttpServletRequest request
+    ) {
+        return fileService.deleteFile(request.getRequestURI());
+    }
+
+    @PutMapping("/**")
+    public ResponseEntity<String> updateFile(
+            @RequestParam("file") MultipartFile file,
+            HttpServletRequest request
+    ) {
+        return fileService.updateFile(file, request.getRequestURI());
     }
 }
