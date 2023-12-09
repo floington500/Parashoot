@@ -27,10 +27,10 @@ public class FileUploadController {
      * @return if the upload was successful
      */
     @PostMapping("**")
-    public ResponseEntity<String> uploadFile(
-            @RequestParam("file") MultipartFile file,
+    public ResponseEntity<Object> uploadFile(
+            @RequestParam("file") MultipartFile payload,
             HttpServletRequest request
     ) {
-        return fileService.uploadFile(file, request.getRequestURI());
+        return fileService.performFileOperation("upload", payload, request.getRequestURI());
     }
 }

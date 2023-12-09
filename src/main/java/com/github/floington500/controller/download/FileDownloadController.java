@@ -29,21 +29,21 @@ public class FileDownloadController {
     public ResponseEntity<Object> downloadFile(
             HttpServletRequest request
     ) {
-        return fileService.createBody(request.getRequestURI());
+        return fileService.performFileOperation("download", null, request.getRequestURI());
     }
 
     @DeleteMapping("/**")
-    public ResponseEntity<String> deleteFile(
+    public ResponseEntity<Object> deleteFile(
             HttpServletRequest request
     ) {
-        return fileService.deleteFile(request.getRequestURI());
+        return fileService.performFileOperation("delete", null, request.getRequestURI());
     }
 
     @PutMapping("/**")
-    public ResponseEntity<String> updateFile(
-            @RequestParam("file") MultipartFile file,
+    public ResponseEntity<Object> updateFile(
+            @RequestParam("file") MultipartFile payload,
             HttpServletRequest request
     ) {
-        return fileService.updateFile(file, request.getRequestURI());
+        return fileService.performFileOperation("update", payload, request.getRequestURI());
     }
 }
