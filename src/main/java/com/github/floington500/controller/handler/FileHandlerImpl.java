@@ -21,13 +21,9 @@ public class FileHandlerImpl implements FileHandler {
     }
 
     public Optional<Handler> getOperation(String name) {
-        for (Handler operation : fileOperations) {
-            if (operation.getName().equals(name)) {
-                return Optional.of(operation);
-            }
-        }
-
-        return Optional.empty();
+        return fileOperations.stream()
+                .filter(operation -> operation.getName().equals(name))
+                .findFirst();
     }
 
     public ResponseEntity<Object> performFileOperation(String operation, FileContext ctx) {
