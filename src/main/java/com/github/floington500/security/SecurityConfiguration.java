@@ -42,6 +42,8 @@ public class SecurityConfiguration {
                         .permitAll()
                         .requestMatchers(HttpMethod.DELETE, "/files/**")
                         .authenticated()
+                        .requestMatchers(HttpMethod.PUT, "/files/**")
+                        .authenticated()
                         .requestMatchers(HttpMethod.POST, "/upload/**")
                         .authenticated()
                 )
