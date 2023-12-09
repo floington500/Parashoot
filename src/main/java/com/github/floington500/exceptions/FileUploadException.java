@@ -16,7 +16,7 @@ public class FileUploadException extends IOException {
         this.responseCode = responseCode;
     }
 
-    public ResponseEntity<String> buildResponseEntity() {
+    public ResponseEntity<Object> buildResponseEntity() {
         return ResponseEntity.status(responseCode).body(getMessage());
     }
 }
