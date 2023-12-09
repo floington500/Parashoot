@@ -1,9 +1,9 @@
-package com.github.floington500.controller.service.strategy;
+package com.github.floington500.controller.handler.strategy;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 
-public abstract class FileAction implements IOperation {
+public abstract class FileAction implements Handler {
 
     /**
      * Prefixed for paths provided by the request to map them to the local filesystem path.

@@ -1,6 +1,6 @@
 package com.github.floington500.controller.upload;
 
-import com.github.floington500.controller.service.FileService;
+import com.github.floington500.controller.handler.FileHandlerImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RequiredArgsConstructor
 public class FileUploadController {
 
-    private final FileService fileService;
+    private final FileHandlerImpl fileService;
 
     @GetMapping("/status")
     public ResponseEntity<String> getStatus() {
