@@ -1,4 +1,4 @@
-package com.github.floington500.exceptions;
+package com.github.floington500.common.exceptions;
 
 import lombok.Getter;
 import org.springframework.http.HttpStatus;

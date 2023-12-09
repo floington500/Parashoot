@@ -1,6 +1,6 @@
-package com.github.floington500.controller.handler.strategy;
+package com.github.floington500.common.command;
 
-import com.github.floington500.controller.handler.context.FileContext;
+import com.github.floington500.common.exceptions.handler.context.FileContext;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -10,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
  * This could be useful in the future if I need
  * to sanitize input or something similar.
  */
-public abstract class FileOperation implements Handler {
+public abstract class FileOperation implements Operation {
 
     /**
      * Prefixed for paths provided by the request to map them to the local filesystem path.

@@ -1,7 +1,7 @@
-package com.github.floington500.controller.handler;
+package com.github.floington500.common.command.handler;
 
-import com.github.floington500.controller.handler.context.FileContext;
-import com.github.floington500.controller.handler.strategy.Handler;
+import com.github.floington500.common.command.Operation;
+import com.github.floington500.common.exceptions.handler.context.FileContext;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -14,20 +14,20 @@ import java.util.Optional;
 @Service
 public class FileHandlerImpl implements FileHandler {
 
-    private final List<Handler> fileOperations;
+    private final List<Operation> fileOperations;
 
-    public FileHandlerImpl(List<Handler> fileOperations) {
+    public FileHandlerImpl(List<Operation> fileOperations) {
         this.fileOperations = fileOperations;
     }
 
-    public Optional<Handler> getOperation(String name) {
+    public Optional<Operation> getOperation(String name) {
         return fileOperations.stream()
                 .filter(operation -> operation.getName().equals(name))
                 .findFirst();
     }
 
     public ResponseEntity<Object> performFileOperation(String operation, FileContext ctx) {
-        Optional<Handler> fileOperation = getOperation(operation);
+        Optional<Operation> fileOperation = getOperation(operation);
         if (fileOperation.isEmpty()) {
             return ResponseEntity.badRequest().body("Unsupported operation.");
         }

@@ -1,4 +1,4 @@
-package com.github.floington500.security.filter;
+package com.github.floington500.api.security.filter;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

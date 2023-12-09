@@ -1,6 +1,7 @@
-package com.github.floington500.controller.handler.strategy;
+package com.github.floington500.api.controller.commands;
 
-import com.github.floington500.exceptions.FileUploadException;
+import com.github.floington500.common.command.FileOperation;
+import com.github.floington500.common.exceptions.FileUploadException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;

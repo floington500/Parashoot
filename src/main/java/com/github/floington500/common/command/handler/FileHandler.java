@@ -1,7 +1,7 @@
-package com.github.floington500.controller.handler;
+package com.github.floington500.common.command.handler;
 
-import com.github.floington500.controller.handler.context.FileContext;
-import com.github.floington500.controller.handler.strategy.Handler;
+import com.github.floington500.common.command.Operation;
+import com.github.floington500.common.exceptions.handler.context.FileContext;
 import org.springframework.http.ResponseEntity;
 
 import java.util.Optional;
@@ -11,6 +11,6 @@ import java.util.Optional;
  * handling file operations.
  */
 public interface FileHandler {
-    Optional<Handler> getOperation(String name);
+    Optional<Operation> getOperation(String name);
     ResponseEntity<Object> performFileOperation(String operation, FileContext ctx);
 }

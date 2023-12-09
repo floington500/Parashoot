@@ -1,4 +1,4 @@
-package com.github.floington500.controller.download;
+package com.github.floington500.api.controller.download;
 
 import org.springframework.http.HttpHeaders;
 

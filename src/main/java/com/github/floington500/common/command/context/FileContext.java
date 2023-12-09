@@ -1,4 +1,4 @@
-package com.github.floington500.controller.handler.context;
+package com.github.floington500.common.exceptions.handler.context;
 
 import org.springframework.web.multipart.MultipartFile;
 

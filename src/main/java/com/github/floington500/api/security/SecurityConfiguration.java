@@ -1,7 +1,7 @@
-package com.github.floington500.security;
+package com.github.floington500.api.security;
 
-import com.github.floington500.security.filter.AuthenticationFilter;
-import com.github.floington500.security.filter.ResourceFilter;
+import com.github.floington500.api.security.filter.AuthenticationFilter;
+import com.github.floington500.api.security.filter.ResourceFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
