@@ -1,6 +1,7 @@
 package com.github.floington500.controller.download;
 
-import com.github.floington500.controller.service.FileService;
+import com.github.floington500.controller.handler.FileHandlerImpl;
+import com.github.floington500.controller.handler.context.FileContext;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 @AllArgsConstructor
 public class FileDownloadController {
 
-    private final FileService fileService;
+    private final FileHandlerImpl fileService;
 
     @GetMapping("/status")
     public ResponseEntity<String> getStatus() {
@@ -29,21 +30,21 @@ public class FileDownloadController {
     public ResponseEntity<Object> downloadFile(
             HttpServletRequest request
     ) {
-        return fileService.createBody(request.getRequestURI());
+        return fileService.performFileOperation("download", new FileContext(null, request.getRequestURI()));
     }
 
     @DeleteMapping("/**")
-    public ResponseEntity<String> deleteFile(
+    public ResponseEntity<Object> deleteFile(
             HttpServletRequest request
     ) {
-        return fileService.deleteFile(request.getRequestURI());
+        return fileService.performFileOperation("delete", new FileContext(null, request.getRequestURI()));
     }
 
     @PutMapping("/**")
-    public ResponseEntity<String> updateFile(
-            @RequestParam("file") MultipartFile file,
+    public ResponseEntity<Object> updateFile(
+            @RequestParam("file") MultipartFile payload,
             HttpServletRequest request
     ) {
-        return fileService.updateFile(file, request.getRequestURI());
+        return fileService.performFileOperation("update", new FileContext(payload, request.getRequestURI()));
     }
 }

@@ -1,6 +1,7 @@
 package com.github.floington500.controller.upload;
 
-import com.github.floington500.controller.service.FileService;
+import com.github.floington500.controller.handler.FileHandlerImpl;
+import com.github.floington500.controller.handler.context.FileContext;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RequiredArgsConstructor
 public class FileUploadController {
 
-    private final FileService fileService;
+    private final FileHandlerImpl fileService;
 
     @GetMapping("/status")
     public ResponseEntity<String> getStatus() {
@@ -22,15 +23,15 @@ public class FileUploadController {
     /**
      * Endpoint for handling requests from the client to upload files.
      *
-     * @param file the file uploaded by the client
+     * @param payload the file uploaded by the client
      * @param request used to map the file the client wants to the local filesystem.
      * @return if the upload was successful
      */
     @PostMapping("**")
-    public ResponseEntity<String> uploadFile(
-            @RequestParam("file") MultipartFile file,
+    public ResponseEntity<Object> uploadFile(
+            @RequestParam("file") MultipartFile payload,
             HttpServletRequest request
     ) {
-        return fileService.uploadFile(file, request.getRequestURI());
+        return fileService.performFileOperation("upload", new FileContext(payload, request.getRequestURI()));
     }
 }
