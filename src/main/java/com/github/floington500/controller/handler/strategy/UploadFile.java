@@ -10,11 +10,11 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Handles uploaded files from the client
- * by storing them to the local filesystem.
+ * Handles files uploaded by the client
+ * and stores them to the local filesystem.
  */
 @Component
-public class UploadFile extends FileAction {
+public class UploadFile extends FileOperation {
 
     @Override
     protected ResponseEntity<Object> handleFile(MultipartFile payload) {
@@ -32,7 +32,7 @@ public class UploadFile extends FileAction {
                 throw new FileUploadException("File already exists.", HttpStatus.CONFLICT);
             }
 
-            payload.transferTo(new File(filename));
+            payload.transferTo(new File(filename)); // create file
             return ResponseEntity.ok("File successfully uploaded.");
 
         } catch (FileUploadException e) {

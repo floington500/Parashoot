@@ -9,8 +9,12 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Replaces an already existing file with one
+ * provided by the client.
+ */
 @Component
-public class UpdateFile extends FileAction {
+public class UpdateFile extends FileOperation {
 
     @Override
     protected ResponseEntity<Object> handleFile(MultipartFile payload) {

@@ -6,6 +6,10 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.Optional;
 
+/**
+ * Provides an interface for
+ * handling file operations.
+ */
 public interface FileHandler {
     Optional<Handler> getOperation(String name);
     ResponseEntity<Object> performFileOperation(String operation, FileContext ctx);

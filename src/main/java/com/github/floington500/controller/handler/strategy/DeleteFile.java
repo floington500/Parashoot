@@ -6,8 +6,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 
+/**
+ * Deletes a file under the endpoint that the
+ * user requested.
+ */
 @Component
-public class DeleteFile extends FileAction {
+public class DeleteFile extends FileOperation {
     @Override
     protected ResponseEntity<Object> handleFile(MultipartFile payload) {
         File file = new File(filename);

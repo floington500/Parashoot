@@ -4,7 +4,13 @@ import com.github.floington500.controller.handler.context.FileContext;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 
-public abstract class FileAction implements Handler {
+/**
+ * Provides a base implementation for handlers.
+ * <p>
+ * This could be useful in the future if I need
+ * to sanitize input or something similar.
+ */
+public abstract class FileOperation implements Handler {
 
     /**
      * Prefixed for paths provided by the request to map them to the local filesystem path.

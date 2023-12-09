@@ -20,7 +20,7 @@ import java.nio.file.Files;
  * be rendered in the browser.
  */
 @Component
-public class DownloadFile extends FileAction {
+public class DownloadFile extends FileOperation {
 
     @Override
     protected ResponseEntity<Object> handleFile(MultipartFile payload) {
