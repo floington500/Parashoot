@@ -6,6 +6,7 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.reactive.ClientHttpResponseDecorator;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -103,8 +104,8 @@ public class FileService {
         }
     }
 
-    public ResponseEntity<String> deleteFile(String path) {
-        String filename = toLocalPath("/upload") + pathToFilename(path);
+    public ResponseEntity<String> deleteFile(String URI) {
+        String filename = toLocalPath("/upload") + pathToFilename(URI);
         File file = new File(filename);
 
         if (!file.exists()) {
@@ -112,6 +113,27 @@ public class FileService {
         }
 
         return file.delete() ? ResponseEntity.ok().build() : ResponseEntity.internalServerError().build();
+    }
+
+    public ResponseEntity<String> updateFile(MultipartFile payload, String URI) {
+        String filename = toLocalPath("/upload") + pathToFilename(URI);
+        File file = new File(filename);
+
+        try {
+            if (!file.exists()) {
+                throw new FileUploadException("File could not be found.", HttpStatus.NOT_FOUND);
+            }
+
+            payload.transferTo(file);
+            return ResponseEntity.ok("OK");
+
+        } catch (FileUploadException e) {
+            return e.buildResponseEntity();
+
+        } catch (IOException e) {
+            return ResponseEntity.internalServerError().build();
+
+        }
     }
 
     /**
