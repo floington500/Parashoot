@@ -1,6 +1,6 @@
 package com.github.floington500.common.command;
 
-import com.github.floington500.common.exceptions.handler.context.FileContext;
+import com.github.floington500.common.command.context.FileContext;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 
