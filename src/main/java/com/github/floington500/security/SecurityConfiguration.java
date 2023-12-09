@@ -38,7 +38,7 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)                              // for receiving POST requests
                 .addFilterBefore(resourceFilter, FilterSecurityInterceptor.class)   // add CORS headers for 3rd parties
                 .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers(HttpMethod.GET, "/files/**", "/files/hello", "/upload/status")
+                        .requestMatchers(HttpMethod.GET, "/files/**", "/upload/status")
                         .permitAll()
                         .requestMatchers(HttpMethod.POST, "/upload/**")
                         .authenticated()
