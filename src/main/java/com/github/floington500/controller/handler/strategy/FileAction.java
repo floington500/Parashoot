@@ -1,5 +1,6 @@
 package com.github.floington500.controller.handler.strategy;
 
+import com.github.floington500.controller.handler.context.FileContext;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,11 +14,11 @@ public abstract class FileAction implements Handler {
     protected String directoryPath;
 
     @Override
-    public ResponseEntity<Object> handle(MultipartFile payload, String URI) {
-        filename = toLocalPath("/upload") + pathToFilename(URI);
-        String directoryPath = toLocalPath(URI);
+    public ResponseEntity<Object> handle(FileContext ctx) {
+        filename = toLocalPath("/upload") + pathToFilename(ctx.getURI());
+        String directoryPath = toLocalPath(ctx.getURI());
 
-        return handleFile(payload);
+        return handleFile(ctx.getPayload());
     }
 
     /**

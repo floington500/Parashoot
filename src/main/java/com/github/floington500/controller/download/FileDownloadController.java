@@ -1,6 +1,7 @@
 package com.github.floington500.controller.download;
 
 import com.github.floington500.controller.handler.FileHandlerImpl;
+import com.github.floington500.controller.handler.context.FileContext;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -29,14 +30,14 @@ public class FileDownloadController {
     public ResponseEntity<Object> downloadFile(
             HttpServletRequest request
     ) {
-        return fileService.performFileOperation("download", null, request.getRequestURI());
+        return fileService.performFileOperation("download", new FileContext(null, request.getRequestURI()));
     }
 
     @DeleteMapping("/**")
     public ResponseEntity<Object> deleteFile(
             HttpServletRequest request
     ) {
-        return fileService.performFileOperation("delete", null, request.getRequestURI());
+        return fileService.performFileOperation("delete", new FileContext(null, request.getRequestURI()));
     }
 
     @PutMapping("/**")
@@ -44,6 +45,6 @@ public class FileDownloadController {
             @RequestParam("file") MultipartFile payload,
             HttpServletRequest request
     ) {
-        return fileService.performFileOperation("update", payload, request.getRequestURI());
+        return fileService.performFileOperation("update", new FileContext(payload, request.getRequestURI()));
     }
 }

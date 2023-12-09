@@ -1,6 +1,7 @@
 package com.github.floington500.controller.upload;
 
 import com.github.floington500.controller.handler.FileHandlerImpl;
+import com.github.floington500.controller.handler.context.FileContext;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +32,6 @@ public class FileUploadController {
             @RequestParam("file") MultipartFile payload,
             HttpServletRequest request
     ) {
-        return fileService.performFileOperation("upload", payload, request.getRequestURI());
+        return fileService.performFileOperation("upload", new FileContext(payload, request.getRequestURI()));
     }
 }
