@@ -33,8 +33,8 @@ public class FileService {
      * @param path the resource identifier that the client wants to retrieve
      * @return a response containing the file the user requested, or not found if it does not exist
      */
-    public ResponseEntity<Object> createBody(String path) {
-        String filename = toLocalPath("/upload") + pathToFilename(path);
+    public ResponseEntity<Object> createBody(String URI) {
+        String filename = toLocalPath("/upload") + pathToFilename(URI);
         File file = new File(filename);
 
         InputStreamResource resource;
@@ -101,6 +101,17 @@ public class FileService {
             return ResponseEntity.internalServerError().build();
 
         }
+    }
+
+    public ResponseEntity<String> deleteFile(String path) {
+        String filename = toLocalPath("/upload") + pathToFilename(path);
+        File file = new File(filename);
+
+        if (!file.exists()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return file.delete() ? ResponseEntity.ok().build() : ResponseEntity.internalServerError().build();
     }
 
     /**

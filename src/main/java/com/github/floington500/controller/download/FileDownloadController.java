@@ -4,6 +4,7 @@ import com.github.floington500.controller.service.FileService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,5 +32,12 @@ public class FileDownloadController {
             HttpServletRequest request
     ) {
         return fileService.createBody(request.getRequestURI());
+    }
+
+    @DeleteMapping("/**")
+    public ResponseEntity<String> deleteFile(
+            HttpServletRequest request
+    ) {
+        return fileService.deleteFile(request.getRequestURI());
     }
 }
