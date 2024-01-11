@@ -1,24 +1,18 @@
 # Parashoot
 
-Hosting your own content delivery network is one of the best things you could do to protect your files that you send
-online.
+With the problem of companies being incresingly less trustworthy, Parashoot *aims* to grant users a sense of ownership over their content.
 
 ## Motive
 
 ### Social Media
 
-Nowadays, companies are more invasive than ever when it comes to your personal data and how it is managed. When it comes
-to [Content Delivery](https://www.optimizely.com/optimization-glossary/content-delivery), are you really going to trust
-them with the files you send online?
+Companies are more invasive than ever when it comes to respecting the privacy of its users. When it comes
+to [Content Delivery](https://www.optimizely.com/optimization-glossary/content-delivery), this is where corperation are able to catch the most for every net they cast.
 
-Platforms such as Instagram and Facebook will regularly cache the files you send in their own content delivery networks 
-so that they can build profiles on you and sell data to other shareholders. After all, do you really think they would
-provide these services for free? 
+Platforms such as Instagram and Facebook regularly cache the files you send on their platforms in their own databases so that they can build profiles on you and sell data to other shareholders. After all, do you really think they would provide these services for free? 
 
-Once you upload a file through a media platform, it will forever be stored in their databases and there is nothing you
-can do about it. A common misconception is that deleting the message erases everything, but 
-[Data Tombstoning](https://en.wikipedia.org/wiki/Tombstone_(data_store)) is a practice regularly implemented to log
-everything that is deleted along with a one-to-one copy of the content.
+The moment you click the send button on a message containing a file, it is no longer yours. A common misconception is that deleting the message with the file erases the entry from the database, but 
+[Data Tombstoning](https://en.wikipedia.org/wiki/Tombstone_(data_store)) is a practice regularly implemented to store private copies of files that are deleted in order to enforce as much control on the user.
 
 ### Cloud Storage
 
@@ -33,6 +27,4 @@ useless solution.
 
 ## Solution
 
-Hosting your own content delivery service is a great way to protect your files while ensuring that they are in good
-hands, allowing you to have full control over who has access to your content. By not using the content delivery networks 
-provided by big media companies, you are taking back the ownership of the files you upload online.
+Hosting your own content delivery service is a great way to protect your files while ensuring that they are in good hands. Not using the content delivery networks provided by big media companies, provides you with an extra layer of protection and allows you to take control back.
