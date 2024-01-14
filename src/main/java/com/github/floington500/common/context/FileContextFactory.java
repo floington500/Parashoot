@@ -13,6 +13,10 @@ public class FileContextFactory {
         return new FileContext(null, request.getRequestURI());
     }
 
+    public static FileContext createContext(MultipartFile payload) {
+        return new FileContext(payload, null);
+    }
+
     public static FileContext createContext(HttpServletRequest request, MultipartFile payload) {
         return new FileContext(payload, request.getRequestURI());
     }
