@@ -3,6 +3,10 @@ package com.github.floington500.common.command.context;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.multipart.MultipartFile;
 
+/**
+ * Creates context objects to decouple the number of parameters used in
+ * controllers.
+ */
 public class FileContextFactory {
 
     public static FileContext createContext(HttpServletRequest request) {

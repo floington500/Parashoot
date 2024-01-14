@@ -5,8 +5,10 @@ import com.github.floington500.common.command.handler.FileHandlerImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/files")
@@ -33,18 +35,16 @@ public class FileDownloadController {
         return fileService.performFileOperation("download", FileContextFactory.createContext(request));
     }
 
+    /**
+     * Handles requests to delete a file.
+     *
+     * @param request contains the path for the file in the local filesystem
+     * @return 200 - success
+     */
     @DeleteMapping("/**")
     public ResponseEntity<Object> deleteFile(
             HttpServletRequest request
     ) {
         return fileService.performFileOperation("delete", FileContextFactory.createContext(request));
-    }
-
-    @PutMapping("/**")
-    public ResponseEntity<Object> updateFile(
-            @RequestParam("file") MultipartFile payload,
-            HttpServletRequest request
-    ) {
-        return fileService.performFileOperation("update", FileContextFactory.createContext(request, payload));
     }
 }
