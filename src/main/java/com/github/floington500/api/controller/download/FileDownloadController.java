@@ -1,6 +1,6 @@
 package com.github.floington500.api.controller.download;
 
-import com.github.floington500.common.command.context.FileContext;
+import com.github.floington500.common.command.context.FileContextFactory;
 import com.github.floington500.common.command.handler.FileHandlerImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
@@ -30,14 +30,14 @@ public class FileDownloadController {
     public ResponseEntity<Object> downloadFile(
             HttpServletRequest request
     ) {
-        return fileService.performFileOperation("download", new FileContext(null, request.getRequestURI()));
+        return fileService.performFileOperation("download", FileContextFactory.createContext(request));
     }
 
     @DeleteMapping("/**")
     public ResponseEntity<Object> deleteFile(
             HttpServletRequest request
     ) {
-        return fileService.performFileOperation("delete", new FileContext(null, request.getRequestURI()));
+        return fileService.performFileOperation("delete", FileContextFactory.createContext(request));
     }
 
     @PutMapping("/**")
@@ -45,6 +45,6 @@ public class FileDownloadController {
             @RequestParam("file") MultipartFile payload,
             HttpServletRequest request
     ) {
-        return fileService.performFileOperation("update", new FileContext(payload, request.getRequestURI()));
+        return fileService.performFileOperation("update", FileContextFactory.createContext(request, payload));
     }
 }
