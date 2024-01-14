@@ -2,7 +2,7 @@ package com.github.floington500.api.controller.commands;
 
 import com.github.floington500.api.controller.download.DownloadHeaders;
 import com.github.floington500.common.command.FileOperation;
-import com.github.floington500.common.command.context.FileContext;
+import com.github.floington500.common.context.FileContext;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

@@ -1,9 +1,8 @@
 package com.github.floington500.common.command;
 
-import com.github.floington500.common.command.context.FileContext;
+import com.github.floington500.common.context.FileContext;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -28,7 +27,7 @@ public abstract class FileOperation implements Operation {
 
     @Override
     public ResponseEntity<Object> handle(FileContext ctx) {
-        if (ctx.payload().isEmpty()) {
+        if (ctx.payload() == null) {
             filename = extractFilenameFromURI(ctx.URI());
         } else {
             filename = ctx.payload().getOriginalFilename();

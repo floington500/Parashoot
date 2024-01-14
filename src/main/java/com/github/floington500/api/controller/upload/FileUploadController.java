@@ -1,6 +1,6 @@
 package com.github.floington500.api.controller.upload;
 
-import com.github.floington500.common.command.context.FileContext;
+import com.github.floington500.common.context.FileContextFactory;
 import com.github.floington500.common.command.handler.FileHandlerImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -21,17 +21,32 @@ public class FileUploadController {
     }
 
     /**
-     * Endpoint for handling requests from the client to upload files.
+     * Saves a file to the local filesystem.
      *
-     * @param payload the file uploaded by the client
-     * @param request used to map the file the client wants to the local filesystem.
-     * @return if the upload was successful
+     * @param payload the file to save
+     * @param request contains the path for the file in the local filesystem
+     * @return 200 - success
      */
     @PostMapping("**")
     public ResponseEntity<Object> uploadFile(
             @RequestParam("file") MultipartFile payload,
             HttpServletRequest request
     ) {
-        return fileService.performFileOperation("upload", new FileContext(payload, request.getRequestURI()));
+        return fileService.performFileOperation("upload", FileContextFactory.createContext(request, payload));
+    }
+
+    /**
+     * Replaces an existing file.
+     *
+     * @param payload the new file
+     * @param request contains the path for the file in the local filesystem
+     * @return 200 - success
+     */
+    @PutMapping("/**")
+    public ResponseEntity<Object> updateFile(
+            @RequestParam("file") MultipartFile payload,
+            HttpServletRequest request
+    ) {
+        return fileService.performFileOperation("update", FileContextFactory.createContext(request, payload));
     }
 }

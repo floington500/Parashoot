@@ -1,4 +1,4 @@
-package com.github.floington500.common.command.context;
+package com.github.floington500.common.context;
 
 import org.springframework.web.multipart.MultipartFile;
 
