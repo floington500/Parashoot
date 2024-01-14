@@ -1,4 +1,6 @@
 server:
+  local:
+    storage: ${UPLOAD}
   error:
     include-message: on_param
   servlet:
