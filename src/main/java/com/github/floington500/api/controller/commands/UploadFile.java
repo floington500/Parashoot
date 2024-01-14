@@ -1,6 +1,7 @@
 package com.github.floington500.api.controller.commands;
 
 import com.github.floington500.common.command.FileOperation;
+import com.github.floington500.common.command.context.FileContext;
 import com.github.floington500.common.exceptions.FileUploadException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ import java.io.IOException;
 public class UploadFile extends FileOperation {
 
     @Override
-    protected ResponseEntity<Object> handleFile(MultipartFile payload) {
+    protected ResponseEntity<Object> handleFile(FileContext ctx) {
         try {
             File directory = new File(directoryPath);
             if (!directory.exists()) {
@@ -28,12 +29,12 @@ public class UploadFile extends FileOperation {
                 }
             }
 
-            File file = new File(filename);
+            File file = new File(directoryPath + "/" + filename);
             if (file.exists()) {
                 throw new FileUploadException("File already exists.", HttpStatus.CONFLICT);
             }
 
-            payload.transferTo(new File(filename)); // create file
+            ctx.payload().transferTo(file); // create file
             return ResponseEntity.ok("File successfully uploaded.");
 
         } catch (FileUploadException e) {

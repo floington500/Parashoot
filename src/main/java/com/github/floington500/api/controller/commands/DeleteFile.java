@@ -1,9 +1,9 @@
 package com.github.floington500.api.controller.commands;
 
 import com.github.floington500.common.command.FileOperation;
+import com.github.floington500.common.command.context.FileContext;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 
@@ -14,7 +14,7 @@ import java.io.File;
 @Component
 public class DeleteFile extends FileOperation {
     @Override
-    protected ResponseEntity<Object> handleFile(MultipartFile payload) {
+    protected ResponseEntity<Object> handleFile(FileContext ctx) {
         File file = new File(filename);
 
         if (!file.exists()) {
