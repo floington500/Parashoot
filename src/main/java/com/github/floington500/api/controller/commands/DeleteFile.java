@@ -15,7 +15,7 @@ import java.io.File;
 public class DeleteFile extends FileOperation {
     @Override
     protected ResponseEntity<Object> handleFile(FileContext ctx) {
-        File file = new File(filename);
+        File file = new File(directoryPath + "/" + filename);
 
         if (!file.exists()) {
             return ResponseEntity.notFound().build();
