@@ -27,7 +27,7 @@ public abstract class FileOperation implements Operation {
 
     @Override
     public ResponseEntity<Object> handle(FileContext ctx) {
-        if (ctx.payload().isEmpty()) {
+        if (ctx.payload() == null) {
             filename = extractFilenameFromURI(ctx.URI());
         } else {
             filename = ctx.payload().getOriginalFilename();
