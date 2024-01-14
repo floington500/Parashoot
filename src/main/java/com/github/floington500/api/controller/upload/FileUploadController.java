@@ -1,6 +1,6 @@
 package com.github.floington500.api.controller.upload;
 
-import com.github.floington500.common.command.context.FileContextFactory;
+import com.github.floington500.common.context.FileContextFactory;
 import com.github.floington500.common.command.handler.FileHandlerImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
